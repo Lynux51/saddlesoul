@@ -1,0 +1,147 @@
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>SaddleSoul</title>
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="index.css">
+</head>
+<div id="loader">
+    <h1>SaddleSoul 🐎</h1>
+</div>
+<body>
+
+<nav class="navbar">
+
+<div class="logo">
+<a href="index.html">
+<img src="images/favicon.ico" class="logo-img">
+</a>
+<span>SaddleSoul</span>
+</div>
+
+<div class="nav-right" id="navRight">
+
+<button class="login-btn" onclick="openLogin()">Login</button> <button class="signup-btn" onclick="openSignup()">Sign Up</button>
+
+</div>
+
+</nav>
+
+<!-- PROFILE BOX -->
+
+<div id="profileBox" class="profile-box">
+
+<h3>Your Account</h3>
+
+<p><strong>Name:</strong> <span id="profileName"></span></p>
+<p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+<p><strong>Email:</strong> <span id="profileEmail"></span></p>
+
+<button onclick="logoutUser()" class="logout-btn">Logout</button>
+
+</div>
+
+<!-- LOGIN MODAL -->
+
+<div id="loginModal" class="modal">
+
+<div class="modal-box">
+
+<span class="close-btn" onclick="closeModal()">×</span>
+
+<div class="modal-left">
+<h2>Welcome to SaddleSoul</h2>
+<p>Discover premium horse breeds and connect with trusted sellers.</p>
+</div>
+
+<div class="modal-right">
+
+<h2 id="formTitle">Login</h2>
+
+<input type="text" id="username" placeholder="Full Name">
+<input type="text" id="phone" placeholder="Phone Number">
+<input type="email" id="email" placeholder="Email Address">
+<input type="password" id="password" placeholder="Password">
+
+<button id="loginBtn" onclick="loginUser()" class="login-btn">Login</button> <button id="signupBtn" onclick="signupUser()" class="signup-btn">Sign Up</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- HERO -->
+
+<section class="hero">
+<div class="hero-content">
+<h1>Everything About Horses.<br>One Trusted Platform.</h1>
+<p>Discover breeds, trade safely, and connect with verified merchants.</p>
+
+<button onclick="document.querySelector('.row').scrollIntoView({behavior:'smooth'})">
+Explore Horses
+</button>
+
+</div>
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+<div class="card">🐎 Explore Breeds</div>
+<div class="card">🛒 Buy & Sell</div>
+<div class="card">✅ Verified Merchants</div>
+
+<div class="card" onclick="location.href='buyers-guide.html'">
+📘 Buyer Guide
+</div>
+
+</section>
+
+<!-- BREEDS -->
+
+<section class="row">
+<h2>Popular Breeds</h2>
+
+<div class="breed-grid">
+
+<a href="marwari.html" class="breed-card">
+<img src="./images/marwadi.jpeg">
+<h3>Marwari</h3>
+<p>Indian breed with curved ears.</p>
+</a>
+
+<a href="arabian.html" class="breed-card">
+<img src="./images/arabian.jpg">
+<h3>Arabian</h3>
+<p>Endurance horse.</p>
+</a>
+
+<a href="kathiawari.html" class="breed-card">
+<img src="./images/marwarii.jpg">
+<h3>Kathiawari</h3>
+<p>Hardy Indian breed.</p>
+</a>
+
+<a href="thoroughbred.html" class="breed-card">
+<img src="./images/thorogh.jpeg">
+<h3>Thoroughbred</h3>
+<p>Fast racehorse.</p>
+</a>
+
+</div>
+
+</section>
+
+<footer>
+SaddleSoul © 2026 | College Mini Project
+</footer>
+
+<!-- IMPORTANT: NO SPACE HERE -->
+
+<script src="./index.js"></script>
+<script type="module" src="./firebase.js"></script>
+
+</body>
+</html>
