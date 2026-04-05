@@ -48,6 +48,10 @@ body {
         font-size: 26px;
     }
 }
+img {
+    max-width: 100%;
+    height: auto;
+}
 /*-------------PREMIUM SCROLLBAR-----------*/
 /* hidden by default */
 ::-webkit-scrollbar {
