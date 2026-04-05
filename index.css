@@ -10,6 +10,44 @@ body {
     color: #ffffff;
     overflow-x: hidden;
 }
+/*-------------Flexible Layout (CSS Media Queries)-----------*/
+@media (max-width: 768px) {
+
+    .hero-content {
+        margin: 20px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .breed-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-right {
+        gap: 8px;
+    }
+
+    .nav-right button {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    .breed-hero-text {
+        left: 20px;
+        bottom: 20px;
+    }
+
+    .breed-hero-text h1 {
+        font-size: 26px;
+    }
+}
 /*-------------PREMIUM SCROLLBAR-----------*/
 /* hidden by default */
 ::-webkit-scrollbar {
