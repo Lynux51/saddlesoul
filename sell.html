@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Horses | SaddleSoul</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="./images/favicon.ico" class="logo-img">
+                <span>SaddleSoul</span>
+            </a>
+        </div>
+
+        <div class="nav-right" id="navRight">
+            <span id="accountBtn" style="color:#c89b3c; cursor:pointer;">👋 Hi Guest</span>
+        </div>
+    </nav>
+
+    <section class="guide-hero">
+        <div class="guide-overlay">
+            <h1>Sell Horses</h1>
+            <p>Post your horse for sale with detailed information and photos.</p>
+        </div>
+    </section>
+
+    <section class="guide-container">
+
+        <div class="sell-section">
+            <h2>💰 Sell Your Horse</h2>
+
+            <form id="horseForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="horseName">Horse Name:</label>
+                    <input type="text" id="horseName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="horseBreed">Breed:</label>
+                    <select id="horseBreed" required>
+                        <option value="">Select Breed</option>
+                        <option value="Marwari">Marwari</option>
+                        <option value="Arabian">Arabian</option>
+                        <option value="Kathiawari">Kathiawari</option>
+                        <option value="Thoroughbred">Thoroughbred</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="horseAge">Age (years):</label>
+                    <select id="horseAge" required>
+                        <option value="">Select Age</option>
+                        <script>
+                            for (let i = 1; i <= 30; i++) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="horseHeight">Height (hands):</label>
+                    <select id="horseHeight" required>
+                        <option value="">Select Height</option>
+                        <script>
+                            for (let i = 14; i <= 18; i++) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="horseWeight">Weight (kg):</label>
+                    <select id="horseWeight" required>
+                        <option value="">Select Weight</option>
+                        <script>
+                            for (let i = 300; i <= 800; i += 50) {
+                                document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="sireBreed">Sire Breed:</label>
+                    <input type="text" id="sireBreed" placeholder="Father's breed">
+                </div>
+
+                <div class="form-group">
+                    <label for="damBreed">Dam Breed:</label>
+                    <input type="text" id="damBreed" placeholder="Mother's breed">
+                </div>
+
+                <div class="form-group">
+                    <label for="horsePhotos">Photos:</label>
+                    <input type="file" id="horsePhotos" multiple accept="image/*">
+                </div>
+
+                <button type="submit" class="submit-btn">Add Horse Listing</button>
+            </form>
+        </div>
+
+        <a href="index.html" class="back-btn">← Back to Home</a>
+    </section>
+
+    <footer>
+        SaddleSoul © 2026 | Buy & Sell
+    </footer>
+
+    <script type="module" src="./firebase.js"></script>
+    <script src="./index.js"></script>
+
+    <script>
+        document.getElementById('horseForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('horseName').value;
+            const breed = document.getElementById('horseBreed').value;
+            const age = document.getElementById('horseAge').value;
+            const height = document.getElementById('horseHeight').value;
+            const weight = document.getElementById('horseWeight').value;
+            const sire = document.getElementById('sireBreed').value;
+            const dam = document.getElementById('damBreed').value;
+            const photos = document.getElementById('horsePhotos').files;
+
+            // Convert photos to data URLs
+            const photoPromises = Array.from(photos).map(file => {
+                return new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.readAsDataURL(file);
+                });
+            });
+            const photoDataUrls = await Promise.all(photoPromises);
+
+            const listing = {
+                name,
+                breed,
+                age,
+                height,
+                weight,
+                sire,
+                dam,
+                photos: photoDataUrls
+            };
+
+            // Store in localStorage
+            let listings = JSON.parse(localStorage.getItem('horseListingsSell')) || [];
+            listings.push(listing);
+            localStorage.setItem('horseListingsSell', JSON.stringify(listings));
+
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>

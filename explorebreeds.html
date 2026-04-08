@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Breeds | SaddleSoul</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+    <div class="logo">
+        <a href="index.html" class="logo-link">
+            <img src="./images/favicon.ico" class="logo-img">
+            <span>SaddleSoul</span>
+        </a>
+    </div>
+
+    <div class="nav-right" id="navRight">
+        <span id="accountBtn" style="color:#c89b3c; cursor:pointer;">👋 Hi Guest</span>
+    </div>
+
+</nav>
+
+<!-- PROFILE -->
+
+<div id="profileBox" class="profile-box">
+    <h3>Your Account</h3>
+    <p><strong>Name:</strong> <span id="profileName"></span></p>
+    <p><strong>Phone:</strong> <span id="profilePhone"></span></p>
+    <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+    <button onclick="logoutUser()" class="logout-btn">Logout</button>
+</div>
+
+<!-- HERO -->
+
+<section class="guide-hero">
+    <div class="guide-overlay">
+        <h1>Explore Horse Breeds</h1>
+        <p>Browse all available breeds and learn about their features.</p>
+    </div>
+</section>
+
+<!-- BREEDS -->
+
+<section class="row">
+    <h2>All Breeds</h2>
+
+        <div class="breed-grid-large">
+
+            <a href="./marwari.html" class="breed-card">
+                <img src="./images/marwadi.jpeg">
+                <h3>Marwari</h3>
+                <p>Indian breed with curved ears.</p>
+            </a>
+
+            <a href="./arabian.html" class="breed-card">
+            <img src="./images/arabian.jpg">
+            <h3>Arabian</h3>
+            <p>Endurance horse.</p>
+        </a>
+
+        <a href="./Kathiawari.html" class="breed-card">
+            <img src="./images/marwarii.jpg">
+            <h3>Kathiyawari</h3>
+            <p>Hardy Indian breed.</p>
+        </a>
+
+        <a href="./Thoroughbred.html" class="breed-card">
+            <img src="./images/thorogh.jpeg">
+            <h3>Thoroughbred</h3>
+            <p>Fast racehorse.</p>
+        </a>
+
+        <a href="./manipuri.html" class="breed-card">
+            <img src="./images/thoroughbred2.png">
+            <h3>Manipuri</h3>
+            <p>Light, agile pony from northeastern India.</p>
+        </a>
+
+        <a href="./spiti.html" class="breed-card">
+            <img src="./images/thoroughbred2.png">
+            <h3>Spiti</h3>
+            <p>Mountain breed adapted to cold, high-altitude terrain.</p>
+        </a>
+
+        <a href="./bhutia.html" class="breed-card">
+            <img src="./images/thoroughbred2.png">
+            <h3>Bhutia</h3>
+            <p>Sturdy Himalayan horse used for trekking and transport.</p>
+        </a>
+
+        <a href="./zanskari.html" class="breed-card">
+            <img src="./images/thoroughbred2.png">
+            <h3>Zanskari</h3>
+            <p>Small, strong mountain horse from Ladakh.</p>
+        </a>
+
+        <a href="./deccani.html" class="breed-card">
+            <img src="./images/thoroughbred2.png">
+            <h3>Deccani</h3>
+            <p>Versatile southern Indian breed known for endurance.</p>
+        </a>
+
+        <a href="./chummarti.html" class="breed-card">
+            <img src="./images/thoroughbred2.png">
+            <h3>Chummarti</h3>
+            <p>Rare breed from the Himalayas with strong mountain ability.</p>
+        </a>
+
+        <a href="./kachchhi-sindhi.html" class="breed-card">
+            <img src="./images/thoroughbred2.png">
+            <h3>Kachchhi-Sindhi</h3>
+            <p>Desert-adapted breed from western India and Sindh.</p>
+        </a>
+
+        <a href="./punjabi.html" class="breed-card">
+            <img src="./images/thoroughbred2.png">
+            <h3>Punjabi (Nukra)</h3>
+            <p>Strong Punjabi horse prized for riding and cavalry use.</p>
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+SaddleSoul © 2026 | Explore Breeds
+</footer>
+
+<script type="module" src="./firebase.js"></script>
+<script src="./index.js"></script>
+
+</body>
+</html>

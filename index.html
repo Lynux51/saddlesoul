@@ -1,7 +1,7 @@
 <html>
 
 <head>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <title>SaddleSoul</title>
 <link rel="icon" href="favicon.ico">
@@ -14,14 +14,14 @@
 
 <nav class="navbar">
 
-<div class="logo">
-<a href="index.html">
-<img src="images/favicon.ico" class="logo-img">
-</a>
-<span>SaddleSoul</span>
-</div>
+    <div class="logo">
+        <a href="index.html" class="logo-link">
+            <img src="images/favicon.ico" class="logo-img">
+            <span>SaddleSoul</span>
+        </a>
+    </div>
 
-<div class="nav-right" id="navRight">
+    <div class="nav-right" id="navRight">
 
 <button class="login-btn" onclick="openLogin()">Login</button> <button class="signup-btn" onclick="openSignup()">Sign Up</button>
 
@@ -90,9 +90,12 @@ Explore Horses
 <!-- FEATURES -->
 
 <section class="features">
-<div class="card">🐎 Explore Breeds</div>
-<div class="card">🛒 Buy & Sell</div>
-<div class="card">✅ Verified Merchants</div>
+<div class="card" onclick="location.href='explorebreeds.html'">
+🐎 Explore Breeds
+</div>
+
+<div class="card" onclick="location.href='buy-sell.html'">💰 Sell Horses</div>
+    <div class="card" onclick="location.href='verified-merchants.html'">🛒 Buy Horses</div>
 
 <div class="card" onclick="location.href='buyers-guide.html'">
 📘 Buyer Guide
@@ -141,8 +144,8 @@ SaddleSoul © 2026 | College Mini Project
 
 <!-- IMPORTANT: NO SPACE HERE -->
 
-<script src="./index.js"></script>
 <script type="module" src="./firebase.js"></script>
+<script src="./index.js"></script>
 
 </body>
 </html>
