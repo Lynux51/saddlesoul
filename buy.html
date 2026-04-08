@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Horses | SaddleSoul</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="./images/favicon.ico" class="logo-img">
+                <span>SaddleSoul</span>
+            </a>
+        </div>
+
+        <div class="nav-right" id="navRight">
+            <span id="accountBtn" style="color:#c89b3c; cursor:pointer;">👋 Hi Guest</span>
+        </div>
+    </nav>
+
+    <section class="guide-hero">
+        <div class="guide-overlay">
+            <h1>Buy Horses</h1>
+            <p>Browse available horse listings from trusted sellers.</p>
+        </div>
+    </section>
+
+    <section class="guide-container">
+
+        <div class="buy-section">
+            <h2>🛒 Available Horses</h2>
+
+            <div id="buyListings" class="listings">
+                <h3>Horse Listings</h3>
+                <!-- Listings will be displayed here -->
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">← Back to Home</a>
+    </section>
+
+    <footer>
+        SaddleSoul © 2026 | Buy Horses
+    </footer>
+
+    <script type="module" src="./firebase.js"></script>
+    <script src="./index.js"></script>
+
+    <script>
+        function displayBuyListings() {
+            const listingsDiv = document.getElementById('buyListings');
+            const listings = JSON.parse(localStorage.getItem('horseListingsSell')) || [];
+
+            listingsDiv.innerHTML = '<h3>Horse Listings</h3>';
+
+            if (listings.length === 0) {
+                listingsDiv.innerHTML += '<p>No horses available for sale.</p>';
+                return;
+            }
+
+            listings.forEach(listing => {
+                const item = document.createElement('div');
+                item.className = 'listing-item';
+                item.innerHTML = `
+                    <h4>${listing.name}</h4>
+                    <p><strong>Breed:</strong> ${listing.breed}</p>
+                    <p><strong>Age:</strong> ${listing.age} years</p>
+                    <p><strong>Height:</strong> ${listing.height} hands</p>
+                    <p><strong>Weight:</strong> ${listing.weight} kg</p>
+                    <p><strong>Sire:</strong> ${listing.sire || 'N/A'}</p>
+                    <p><strong>Dam:</strong> ${listing.dam || 'N/A'}</p>
+                    <div class="listing-photos">
+                        ${listing.photos.map(photo => `<img src="${photo}" alt="Horse photo">`).join('')}
+                    </div>
+                `;
+                listingsDiv.appendChild(item);
+            });
+        }
+
+        // Load listings on page load
+        window.addEventListener('load', displayBuyListings);
+    </script>
+</body>
+</html>
