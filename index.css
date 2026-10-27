@@ -168,27 +168,6 @@ button:active::after {
     margin-right: -26px;
 }
 
-.logo {
-    font-size: 26px;
-    font-weight: bold;
-    color: #c89b3c;
-}
-
-.navbar ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-.navbar ul li {
-    cursor: pointer;
-    color: #ddd;
-}
-
-.navbar ul li:hover {
-    color: #c89b3c;
-}
-
 
 /* ---------------- HERO ---------------- */
 
@@ -326,12 +305,6 @@ button:active::after {
     box-shadow: 0 0 25px rgba(200, 155, 60, 0.4);
 }
 
-.breed-detail {
-    max-width: 1000px;
-    margin: auto;
-    padding: 120px 20px;
-}
-
 .breed-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -390,33 +363,6 @@ button:active::after {
     margin-bottom: 16px;
 }
 
-.row-cards {
-    display: flex;
-    gap: 18px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-}
-
-.row-cards::-webkit-scrollbar {
-    height: 6px;
-}
-
-.horse-card {
-    min-width: 220px;
-    height: 130px;
-    background: #1f1f1f;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    transition: transform 0.3s ease;
-}
-
-.horse-card:hover {
-    transform: scale(1.15);
-}
-
 
 /* ---------------- FOOTER ---------------- */
 
@@ -465,73 +411,10 @@ footer {
     }
 }
 
-.breed-section {
-    margin: 40px 0;
-}
-
-.breed-section h2 {
-    color: #ffffff;
-    margin-bottom: 12px;
-}
-
-.breed-short-desc {
-    font-size: 17px;
-    color: #ffb300;
-    max-width: 900px;
-}
-
-.breed-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.breed-table td {
-    border: 1px solid #333;
-    padding: 10px;
-    color: #bbb;
-}
-
-.breed-table td:first-child {
-    font-weight: bold;
-    color: #eee;
-    width: 30%;
-}
-
-.price-box {
-    background: #141414;
-    padding: 20px;
-    border-left: 4px solid #c89b3c;
-}
-
 .breed-detail {
     max-width: 900px;
     margin: auto;
-    padding: 120px 20px;
-}
-
-.breed-hero {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.breed-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-.breed-table td {
-    border: 1px solid #333;
-    padding: 10px;
-}
-
-.price-box {
-    background: #141414;
-    padding: 20px;
-    border-left: 4px solid #c89b3c;
-    margin-top: 20px;
+    padding: 60px 20px;
 }
 
 .breed-hero-section {
@@ -558,12 +441,6 @@ footer {
 .breed-hero-text h1 {
     font-size: 50px;
     color: #c89b3c;
-}
-
-.breed-detail {
-    max-width: 900px;
-    margin: auto;
-    padding: 60px 20px;
 }
 
 .breed-short-desc {
@@ -601,6 +478,13 @@ footer {
 .breed-table td {
     border-bottom: 1px solid #333;
     padding: 12px;
+    color: #bbb;
+}
+
+.breed-table td:first-child {
+    font-weight: bold;
+    color: #eee;
+    width: 30%;
 }
 
 .breed-list li {
@@ -795,15 +679,6 @@ footer {
     border-radius: 6px;
     background: #222;
     color: white;
-}
-
-
-/* NAV RIGHT */
-
-.nav-right {
-    display: flex;
-    gap: 15px;
-    align-items: center;
 }
 
 

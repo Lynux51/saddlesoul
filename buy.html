@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy Horses | SaddleSoul</title>
+    <link rel="icon" type="image/png" href="./images/saddlesoul-logo.png">
     <link rel="stylesheet" href="index.css">
 </head>
 
@@ -51,10 +50,30 @@
     <script type="module" src="./firebase.js"></script>
     <script src="./index.js"></script>
 
-    <script>
-        function displayBuyListings() {
+       <script type="module">
+        import { getListings } from "./supabase.js";
+
+        function escapeHtml(text) {
+            return String(text ?? '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        async function displayBuyListings() {
             const listingsDiv = document.getElementById('buyListings');
-            const listings = JSON.parse(localStorage.getItem('horseListingsSell')) || [];
+            listingsDiv.innerHTML = '<h3>Horse Listings</h3><p>Loading...</p>';
+
+            let listings;
+            try {
+                listings = await getListings();
+            } catch (error) {
+                console.error(error);
+                listingsDiv.innerHTML = '<h3>Horse Listings</h3><p>Could not load listings. Please try again later.</p>';
+                return;
+            }
 
             listingsDiv.innerHTML = '<h3>Horse Listings</h3>';
 
@@ -67,23 +86,20 @@
                 const item = document.createElement('div');
                 item.className = 'listing-item';
                 item.innerHTML = `
-                    <h4>${listing.name}</h4>
-                    <p><strong>Breed:</strong> ${listing.breed}</p>
-                    <p><strong>Age:</strong> ${listing.age} years</p>
-                    <p><strong>Height:</strong> ${listing.height} hands</p>
-                    <p><strong>Weight:</strong> ${listing.weight} kg</p>
-                    <p><strong>Sire:</strong> ${listing.sire || 'N/A'}</p>
-                    <p><strong>Dam:</strong> ${listing.dam || 'N/A'}</p>
+                    <h4>${escapeHtml(listing.name)}</h4>
+                    <p><strong>Breed:</strong> ${escapeHtml(listing.breed)}</p>
+                    <p><strong>Age:</strong> ${escapeHtml(listing.age)} years</p>
+                    <p><strong>Height:</strong> ${escapeHtml(listing.height)} hands</p>
+                    <p><strong>Weight:</strong> ${escapeHtml(listing.weight)} kg</p>
+                    <p><strong>Sire:</strong> ${escapeHtml(listing.sire) || 'N/A'}</p>
+                    <p><strong>Dam:</strong> ${escapeHtml(listing.dam) || 'N/A'}</p>
                     <div class="listing-photos">
-                        ${listing.photos.map(photo => `<img src="${photo}" alt="Horse photo">`).join('')}
+                        ${listing.photos.map(photo => `<img src="${escapeHtml(photo)}" alt="Horse photo">`).join('')}
                     </div>
                 `;
                 listingsDiv.appendChild(item);
             });
         }
 
-        // Load listings on page load
-        window.addEventListener('load', displayBuyListings);
+        displayBuyListings();
     </script>
-</body>
-</html>

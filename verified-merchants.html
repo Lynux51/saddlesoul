@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sell Horses | SaddleSoul</title>
+    <link rel="icon" type="image/png" href="./images/saddlesoul-logo.png">
     <link rel="stylesheet" href="index.css">
 </head>
 
@@ -117,48 +118,39 @@
     <script type="module" src="./firebase.js"></script>
     <script src="./index.js"></script>
 
-    <script>
-        document.getElementById('horseForm').addEventListener('submit', async function(e) {
+        <script type="module">
+        import { addListing } from "./supabase.js";
+
+        const form = document.getElementById('horseForm');
+
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const name = document.getElementById('horseName').value;
-            const breed = document.getElementById('horseBreed').value;
-            const age = document.getElementById('horseAge').value;
-            const height = document.getElementById('horseHeight').value;
-            const weight = document.getElementById('horseWeight').value;
-            const sire = document.getElementById('sireBreed').value;
-            const dam = document.getElementById('damBreed').value;
-            const photos = document.getElementById('horsePhotos').files;
-
-            // Convert photos to data URLs
-            const photoPromises = Array.from(photos).map(file => {
-                return new Promise((resolve) => {
-                    const reader = new FileReader();
-                    reader.onload = () => resolve(reader.result);
-                    reader.readAsDataURL(file);
-                });
-            });
-            const photoDataUrls = await Promise.all(photoPromises);
+            const button = form.querySelector('.submit-btn');
+            button.disabled = true;
+            button.textContent = 'Uploading...';
 
             const listing = {
-                name,
-                breed,
-                age,
-                height,
-                weight,
-                sire,
-                dam,
-                photos: photoDataUrls
+                name: document.getElementById('horseName').value,
+                breed: document.getElementById('horseBreed').value,
+                age: document.getElementById('horseAge').value,
+                height: document.getElementById('horseHeight').value,
+                weight: document.getElementById('horseWeight').value,
+                sire: document.getElementById('sireBreed').value,
+                dam: document.getElementById('damBreed').value
             };
+            const photos = document.getElementById('horsePhotos').files;
 
-            // Store in localStorage
-            let listings = JSON.parse(localStorage.getItem('horseListingsSell')) || [];
-            listings.push(listing);
-            localStorage.setItem('horseListingsSell', JSON.stringify(listings));
-
-            // Reset form
-            this.reset();
+            try {
+                await addListing(listing, photos);
+                alert('Horse listing added!');
+                form.reset();
+            } catch (error) {
+                console.error(error);
+                alert('Could not add listing: ' + error.message);
+            } finally {
+                button.disabled = false;
+                button.textContent = 'Add Horse Listing';
+            }
         });
     </script>
-</body>
-</html>
